@@ -1,0 +1,60 @@
+@import './fonts';
+
+  :root {
+    --background: #f2f2f2;
+    --foreground: 213 31% 91%;
+    --primary: #03adfc;
+    --primary-foreground: 210 40% 98%;
+    --secondary:#c9d4c9;
+    --secondary-foreground: 110 47.4% 11.2%;
+    --text-color: #000000;
+    --hero-white: #ffffff;
+
+    // Font Sizes
+    --heading-h1: 4rem;
+    --heading-h2: 3.5rem;
+    --heading-h3: 3rem;
+    --heading-h4: 2.75rem;
+    --heading-h5: 2.25rem;
+    --heading-h6: 1.5rem;
+    --body-base: 1rem;
+
+    }
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* For IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &:-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans'
+}
+
+/* Dark Mode */
+.dark {
+    --background: #121212;
+    --foreground: 213 31% 91%;
+    --primary: #000000;
+    --primary-foreground: 210 40% 98%;
+    --secondary: #161716;
+    --secondary-foreground: 110 47.4% 11.2%;
+    --text-color: #ffffff;
+
+    body {
+        background: var(--background);
+    }
+  
+}

@@ -1,0 +1,65 @@
+{
+  "name": "react-vite-styled-components",
+  "description": "A very simple repo using React, Vite and Styled Components",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "react",
+    "boilerplate",
+    "typescript",
+    "starter",
+    "styled components"
+  ],
+  "author": "Paddy Griffin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paddykgriffin/react-vite-styled-components-starter.git "
+  },
+  "dependencies": {
+    "@fvilers/disable-react-devtools": "^1.3.0",
+    "@iconify/react": "^5.2.0",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@reduxjs/toolkit": "^2.5.1",
+    "@types/color": "^4.2.0",
+    "@types/styled-components": "^5.1.34",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "colo": "^1.0.0",
+    "color": "^4.2.3",
+    "normalize.css": "^8.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.4.0",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^6.29.0",
+    "redux-persist": "^6.0.0",
+    "styled-components": "^5.3.11",
+    "tailwind-merge": "^3.0.1",
+    "vite-plugin-svgr": "^4.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@types/node": "^22.13.1",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^6.0.5"
+  },
+  "browserslist": "last 2 versions",
+  "resolutions": {
+    "styled-components": "^5"
+  }
+}
