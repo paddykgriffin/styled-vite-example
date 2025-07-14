@@ -8,10 +8,12 @@
     --secondary:#c9d4c9;
     --secondary-foreground: 110 47.4% 11.2%;
     --text-color: #000000;
-    --hero-white: #ffffff;
+    --text-white: #ffffff;
+    --gold: #FBD784;
+    --gray: #858E92;
 
     // Font Sizes
-    --heading-h1: 4rem;
+    --heading-h1: 5rem;
     --heading-h2: 3.5rem;
     --heading-h3: 3rem;
     --heading-h4: 2.75rem;
@@ -40,7 +42,7 @@ html {
 }
 
 body {
-    font-family: 'Open Sans'
+    font-family: 'Anaheim', sans-serif;
 }
 
 /* Dark Mode */

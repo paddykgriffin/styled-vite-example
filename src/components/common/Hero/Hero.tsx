@@ -1,10 +1,10 @@
-import React, { type ReactNode, useEffect, useRef, useState } from 'react';
+import React, { type ReactNode, useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Typography, { TypographyProps } from '@/components/typography/Typography';
 import type { HTMLProps } from '@/types/common.types';
 import Container from '@/components/layout/Container';
 import { HeroContextType, ContentProps, BackgroundProps, HeroComposition, ScrollIconProps } from './hero.interfaces';
-import { LuChevronDown, LuMouse } from 'react-icons/lu';
+import { LuArrowDown } from 'react-icons/lu';
 import useWindowSize from '@/hooks/useWindowSize';
 
 const HeroContext = React.createContext<HeroContextType | undefined>(undefined);
@@ -80,16 +80,16 @@ const ContentWrapper = styled.div`
   grid-row-start: 1;
   display: flex;
   align-items: center;
-  text-align: center;
+  text-align: left;
   z-index: 2;
 `;
 
 const Content = ({ children, className }: ContentProps) => {
-  const { isLoaded } = useHeroContext();
-  if (!isLoaded) return null;
+  // const { isLoaded } = useHeroContext();
+  // if (!isLoaded) return null;
   return (
     <ContentWrapper className={className} id="content">
-      <Container className="py-0">{children}</Container>
+      <Container maxWidth="60rem">{children}</Container>
     </ContentWrapper>
   );
 };
@@ -102,39 +102,56 @@ const Title: React.FC<TypographyProps> = ({ children, className, textColor = 'de
   );
 };
 
-const SubTitle: React.FC<TypographyProps> = ({ children, className, textColor = 'default' }) => {
-  return (
-    <Typography variant="body1" className={className} textColor={textColor}>
-      {children}
-    </Typography>
-  );
+const SubTitle: React.FC<TypographyProps> = ({ children }) => {
+  const SubTitleContent = styled.p`
+    position: relative;
+    color: var(--gold);
+    padding-left: 70px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    &:before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+      content: '';
+      display: block;
+      width: 50px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 8px;
+  `;
+
+  return <SubTitleContent> {children}</SubTitleContent>;
 };
 
 const ScrollIconWrapper = styled.div`
-  grid-column-start: 1;
-  grid-row-start: 1;
+  // grid-column-start: 1;
+  // grid-row-start: 1;
   display: flex;
   align-items: flex-end;
+  //background: red;
   z-index: 2;
-  padding-bottom: 3rem;
+  //padding-bottom: 8rem;
   & p {
-    color: var(--hero-white);
+    color: var(--text-white);
+    padding: 0;
   }
 `;
 const ScrollButton = styled.button`
   cursor: pointer;
   animation: bounce 4s infinite;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: 8px;
   background: transparent;
   border: none;
 
   & svg {
-    width: 40px;
-    height: 40px;
-    stroke: var(--hero-white);
+    width: 20px;
+    height: 20px;
+    stroke: var(--text-white);
   }
 `;
 
@@ -154,27 +171,33 @@ const ScrollAlignment = styled.div<{ align: 'left' | 'center' | 'right' }>`
 `;
 
 const ScrollIcon = ({ className, align = 'right' }: ScrollIconProps) => {
-  const { isLoaded, heroBannerRef } = useHeroContext();
+  // const { isLoaded, heroBannerRef } = useHeroContext();
+  //const { heroBannerRef } = useHeroContext();
+  // const scrollToBottom = () => {
+  //   if (heroBannerRef.current) {
+  //     window.scrollTo({
+  //       top: window.scrollY + heroBannerRef.current.getBoundingClientRect().bottom,
+  //       behavior: 'smooth',
+  //     });
+  //   }
+  // };
 
   const scrollToBottom = () => {
-    if (heroBannerRef.current) {
-      window.scrollTo({
-        top: window.scrollY + heroBannerRef.current.getBoundingClientRect().bottom,
-        behavior: 'smooth',
-      });
+    const target = document.getElementById('sectionFirst');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  if (!isLoaded) return null;
+  //if (!isLoaded) return null;
 
   return (
     <ScrollIconWrapper id="scroll">
-      <Container>
+      <Container maxWidth="60rem">
         <ScrollAlignment align={align}>
           <ScrollButton onClick={scrollToBottom} className={className}>
-            <Typography variant="body2">scroll</Typography>
-            <LuMouse />
-            <LuChevronDown />
+            <Typography variant="body1">scroll down</Typography>
+            <LuArrowDown />
           </ScrollButton>
         </ScrollAlignment>
       </Container>
@@ -186,6 +209,7 @@ const HeroSection = styled.section`
   position: relative;
   display: grid;
   width: 100%;
+  min-height: 100vh;
 `;
 
 const Hero: React.FC<HeroProps> & HeroComposition = Object.assign(
@@ -212,4 +236,4 @@ const Hero: React.FC<HeroProps> & HeroComposition = Object.assign(
 
 Hero.displayName = 'Hero';
 
-export { Hero, Background, Content, Title, SubTitle, ScrollIcon };
+export { Hero, Content, Background, Title, SubTitle, ScrollIcon };

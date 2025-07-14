@@ -6,7 +6,7 @@ export interface MenuItem {
 
 export const HeaderMenuLinks: Array<MenuItem> = [
   {
-    title: 'Home',
+    title: 'Equipment',
     path: '/',
   },
   {
@@ -14,15 +14,7 @@ export const HeaderMenuLinks: Array<MenuItem> = [
     path: '/',
   },
   {
-    title: 'Services',
-    path: '/',
-  },
-  {
-    title: 'Case Studies',
-    path: '/',
-  },
-  {
-    title: 'Contact',
+    title: 'Blog',
     path: '/',
   },
 ];

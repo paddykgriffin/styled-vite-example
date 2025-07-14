@@ -1,7 +1,7 @@
 import { SiteConfig } from './types/site-config-types';
 
 const siteConfig: SiteConfig = {
-  siteName: 'Site Boilerplate',
+  siteName: 'Paddy Hiker',
   darkMode: true,
   theme: {
     color: {
@@ -15,6 +15,14 @@ const siteConfig: SiteConfig = {
       },
     },
   },
+  layout: {
+    header: {
+      transparent: true,
+      hideOnScroll: false,
+      mainNav: true,
+      sidebarNav: true
+    }
+  }
 };
 
 export default siteConfig;

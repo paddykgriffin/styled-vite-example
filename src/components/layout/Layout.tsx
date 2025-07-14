@@ -1,19 +1,25 @@
 import Footer from '@/components/layout/Footer';
-import Header from '@/components/layout/Header';
+import Header from '@/components/layout/Header/Header';
 import { useEffect } from 'react';
 import type React from 'react';
 import styled from 'styled-components';
+import siteConfig from '@/site-config';
+import { HeaderProvider } from '@/components/layout/Header/HeaderContext';
+import { s3 } from '@/utils/s3';
 
 interface LayoutProps {
   children: React.ReactNode;
   emptyPage?: boolean;
   pageTitle?: string;
+  disableTransparentHeader?: boolean;
 }
 
 const SiteWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  //height: 100vh;
+  background: #0b1d26 url(${s3('body.png')}) no-repeat;
+  //background-size: cover;
 `;
 
 const MainWrapper = styled.main`
@@ -21,7 +27,7 @@ const MainWrapper = styled.main`
   height: auto;
 `;
 
-const Layout = ({ pageTitle, emptyPage, children }: LayoutProps) => {
+const Layout = ({ pageTitle, children, disableTransparentHeader }: LayoutProps) => {
   useEffect(() => {
     if (import.meta.env.REACT_APP_PROJECT_NAME) {
       document.title = `${pageTitle} | ${import.meta.env.REACT_APP_PROJECT_NAME}`;
@@ -30,18 +36,26 @@ const Layout = ({ pageTitle, emptyPage, children }: LayoutProps) => {
     }
   }, [pageTitle]);
 
+  useEffect(() => {
+    if (!siteConfig.layout.header.transparent || disableTransparentHeader) {
+      setTimeout(() => {
+        const header = document.getElementById('main-header');
+        const siteMain = document.getElementById('site-main');
+        if (header && siteMain) {
+          siteMain.style.marginTop = `${header.offsetHeight}px`;
+        }
+      }, 50);
+    }
+  }, [disableTransparentHeader]);
+
   return (
-    <>
-      {emptyPage ? (
-        children
-      ) : (
-        <SiteWrapper>
-          <Header />
-          <MainWrapper>{children}</MainWrapper>
-          <Footer />
-        </SiteWrapper>
-      )}
-    </>
+    <SiteWrapper>
+      <HeaderProvider>
+        <Header />
+      </HeaderProvider>
+      <MainWrapper>{children}</MainWrapper>
+      <Footer />
+    </SiteWrapper>
   );
 };
 

@@ -11,5 +11,13 @@ export type SiteConfig = {
       primary: SiteMode;
       secondary: SiteMode;
     };
-  };
+  },
+  layout: {
+    header: {
+      transparent: boolean;
+      hideOnScroll: boolean;
+      mainNav: boolean;
+      sidebarNav: boolean;
+    }
+  }
 };

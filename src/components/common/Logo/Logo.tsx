@@ -1,5 +1,5 @@
-import useCurrentTheme from '@/hooks/useCurrentTheme';
-import LogoDark from '@/assets/images/LogoDark.svg';
+// import useCurrentTheme from '@/hooks/useCurrentTheme';
+// import LogoDark from '@/assets/images/LogoDark.svg';
 import { NavLink } from 'react-router-dom';
 import Logo from '@/assets/images/Logo.svg';
 import siteConfig from '@/site-config';
@@ -10,12 +10,12 @@ const BrandLogo = styled.img`
 `;
 
 export default function SiteLogo() {
-  const { currentTheme } = useCurrentTheme();
-  const LogoToRender = currentTheme === 'dark' ? LogoDark : Logo;
+  //const { currentTheme } = useCurrentTheme();
+  //const LogoToRender = currentTheme === 'dark' ? LogoDark : Logo;
 
   return (
     <NavLink to="/">
-      <BrandLogo src={LogoToRender} alt={siteConfig.siteName} />
+      <BrandLogo src={Logo} alt={siteConfig.siteName} />
     </NavLink>
   );
 }

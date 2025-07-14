@@ -6,7 +6,12 @@ const Bootstrap: React.FC = (): ReactNode => {
   let AppToRender = App;
 
   const AppContent = (
-    <BrowserRouter>
+    <BrowserRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       <AppToRender />
     </BrowserRouter>
   );

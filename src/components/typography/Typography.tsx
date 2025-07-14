@@ -8,18 +8,18 @@ export type TypographyProps = {
   children: ReactNode;
   component?: ElementType;
   align?: 'none' | 'left';
-  textColor?: 'default' | 'white' | 'primary' | 'secondary';
+  textColor?: 'default' | 'white' | 'primary' | 'secondary' | 'gray' | 'gold';
   className?: string;
 };
 
 const variantStyles = {
   h1: `
     font-size: var(--heading-h1);
-    font-weight: 700;
+    font-weight: 400;
   `,
   h2: `
     font-size: var(--heading-h2);
-    font-weight: 600;
+    font-weight: 700;
   `,
   h3: `
     font-size: var(--heading-h3);
@@ -52,9 +52,11 @@ const alignStyles = {
 
 const textColorStyles = {
   default: `color: var(--text-color);`,
-  white: `color: var(--hero-white);`,
+  white: `color: var(--text-white);`,
   primary: `color: var(--primary-color);`,
   secondary: `color: var(--secondary-color);`,
+  gray: `color: var(--gray);`,
+  gold: `color: var(--gold);`,
 };
 
 const Typography = styled.p<TypographyProps>`
