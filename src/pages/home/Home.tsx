@@ -9,10 +9,6 @@ import { LuArrowRight } from 'react-icons/lu';
 const SectionInner = styled.div`
   padding-top: 2rem;
   padding-bottom: 4rem;
-  @media (min-width: 768px) {
-    //padding-top: 6rem;
-    //padding-bottom: 6rem;
-  }
 
   @media (min-width: 992px) {
     padding-bottom: 12rem;
@@ -84,6 +80,12 @@ const SubHeader = styled.p`
 
 const RelativeContent = styled.div`
   position: relative;
+
+  &.rev-order {
+    @media (min-width: 992px) {
+      order: 1;
+    }
+  }
 `;
 
 const ReadMore = styled.a`
@@ -117,9 +119,9 @@ const ReadMore = styled.a`
 
 const ReserveContent = styled.div`
   order: 2;
+
   @media (min-width: 768px) {
     order: 1;
-    //background: red;
   }
 `;
 
@@ -168,7 +170,7 @@ const Home = () => {
             <ReserveContent>
               <img src={s3('02.png')} alt="02" style={{ maxWidth: '100%' }} />
             </ReserveContent>
-            <RelativeContent>
+            <RelativeContent className="rev-order">
               <WaterMarkNumber>02</WaterMarkNumber>
               <div className="contents">
                 <SubHeader>Hiking Essentials</SubHeader>
