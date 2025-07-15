@@ -82,6 +82,8 @@ const ContentWrapper = styled.div`
   align-items: center;
   text-align: left;
   z-index: 2;
+  padding-left: 2rem;
+  padding-right: 2rem;
 `;
 
 const Content = ({ children, className }: ContentProps) => {
@@ -102,8 +104,7 @@ const Title: React.FC<TypographyProps> = ({ children, className, textColor = 'de
   );
 };
 
-const SubTitle: React.FC<TypographyProps> = ({ children }) => {
-  const SubTitleContent = styled.p`
+const SubTitleContent = styled.p`
     position: relative;
     color: var(--gold);
     padding-left: 70px;
@@ -122,6 +123,7 @@ const SubTitle: React.FC<TypographyProps> = ({ children }) => {
       margin-bottom: 8px;
   `;
 
+const SubTitle: React.FC<TypographyProps> = ({ children }) => {
   return <SubTitleContent> {children}</SubTitleContent>;
 };
 

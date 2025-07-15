@@ -6,7 +6,7 @@ import siteConfig from '@/site-config';
 import styled from 'styled-components';
 
 const BrandLogo = styled.img`
-  height: 30px;
+  width: 200px;
 `;
 
 export default function SiteLogo() {

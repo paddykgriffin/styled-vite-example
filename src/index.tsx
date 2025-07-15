@@ -28,6 +28,7 @@ if (rootElement) {
       {/* <Provider store={store}>
         <PersistGate loading={<div>loading</div>} persistor={persistor}> */}
       {/* <AppThemeProvider> */}
+
       <Bootstrap />
       {/* </AppThemeProvider> */}
       {/* </PersistGate>

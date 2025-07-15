@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { HeaderMenuLinks } from '../navigation/HeaderMenuLinks';
 import { NavLink } from 'react-router-dom';
+import useWindowSize from '@/hooks/useWindowSize';
 
 const NavWrapper = styled.div`
   display: flex;
   gap: 32px;
-  margin-right: 1rem;
+  background: yellow;
 
   a {
     text-decoration: none;
@@ -34,14 +35,21 @@ const NavWrapper = styled.div`
 `;
 
 const HeaderNav = () => {
+  const { width } = useWindowSize();
+  const safeWidth = width ?? 0;
+
   return (
-    <NavWrapper>
-      {HeaderMenuLinks.map(item => (
-        <NavLink to={item.path} key={item.title}>
-          {item.title}
-        </NavLink>
-      ))}
-    </NavWrapper>
+    <>
+      {safeWidth > 768 && (
+        <NavWrapper>
+          {HeaderMenuLinks.map(item => (
+            <NavLink to={item.path} key={item.title}>
+              {item.title}
+            </NavLink>
+          ))}
+        </NavWrapper>
+      )}
+    </>
   );
 };
 

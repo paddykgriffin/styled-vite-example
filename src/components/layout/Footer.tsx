@@ -23,8 +23,13 @@ const FooterWrapper = styled.footer`
 
 const FooterContainer = styled(Container)`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 90rem;
+
+  max-width: 100%;
+
+  @media (min-width: 768px) {
+    max-width: 90rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const FooterCol1 = styled.div`
@@ -46,6 +51,7 @@ const FooterCol2 = styled.div`
   display: flex;
   gap: 4rem;
   padding-left: 2rem;
+  flex-direction: column;
 
   a {
     position: relative;
