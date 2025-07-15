@@ -17,9 +17,11 @@ interface LayoutProps {
 const SiteWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  //height: 100vh;
-  background: #0b1d26 url(${s3('body.png')}) no-repeat;
-  //background-size: cover;
+  background: #0b1d26 url(${s3('body-small.png')}) no-repeat;
+
+  @media (min-width: 768px) {
+    background: #0b1d26 url(${s3('body.png')}) no-repeat;
+  }
 `;
 
 const MainWrapper = styled.main`

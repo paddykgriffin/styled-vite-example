@@ -9,6 +9,8 @@ const Wrapper = styled.div<WrapperProps>`
   margin-left: auto;
   margin-right: auto;
   max-width: ${({ maxWidth }) => maxWidth || '100%'};
+  padding-left: 1rem;
+  padding-right: 1rem;
 `;
 
 interface Props {

@@ -6,7 +6,6 @@ import useWindowSize from '@/hooks/useWindowSize';
 const NavWrapper = styled.div`
   display: flex;
   gap: 32px;
-  background: yellow;
 
   a {
     text-decoration: none;

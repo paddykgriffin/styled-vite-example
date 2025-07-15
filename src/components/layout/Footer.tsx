@@ -4,15 +4,18 @@ import Container from './Container';
 import styled from 'styled-components';
 import SiteLogo from '../common/Logo/Logo';
 import Typography from '../typography/Typography';
+import useWindowSize from '@/hooks/useWindowSize';
 
 const FooterWrapper = styled.footer`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem;
   color: var(--text-white);
-  //background-color: var(--secondary);
   font-size: 0.875rem;
+
+  @media (min-width: 768px) {
+    padding-bottom: 2rem;
+  }
 
   a {
     color: var(--text-white);
@@ -23,11 +26,12 @@ const FooterWrapper = styled.footer`
 
 const FooterContainer = styled(Container)`
   display: grid;
-
   max-width: 100%;
-
   @media (min-width: 768px) {
     max-width: 90rem;
+    grid-template-columns: 1fr 2fr;
+  }
+  @media (min-width: 992px) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;
@@ -35,14 +39,23 @@ const FooterContainer = styled(Container)`
 const FooterCol1 = styled.div`
   p {
     font-weight: 600;
-    max-width: 50%;
+    line-height: 1.5;
     padding-top: 20px;
-    padding-bottom: 120px;
+    padding-bottom: 40px;
+    @media (min-width: 992px) {
+      max-width: 50%;
+      padding-bottom: 120px;
+      line-height: 1.2;
+    }
 
     &:last-of-type {
+      display: none;
       padding-top: 0;
       padding-bottom: 0;
-      color: var(--gray);
+
+      @media (min-width: 768px) {
+        display: block;
+      }
     }
   }
 `;
@@ -50,8 +63,20 @@ const FooterCol1 = styled.div`
 const FooterCol2 = styled.div`
   display: flex;
   gap: 4rem;
-  padding-left: 2rem;
-  flex-direction: column;
+  padding-left: 0;
+  flex-direction: row;
+
+  @media (min-width: 768px) {
+    padding-left: 2rem;
+  }
+
+  h6 {
+    font-size: 1.125rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.5rem;
+    }
+  }
 
   a {
     position: relative;
@@ -79,8 +104,20 @@ const FooterCol2 = styled.div`
   }
 `;
 
+const MobileCopyRight = styled.div`
+  display: block;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  @media (min-width: 768px) {
+    display: none;
+    padding-top: 1rem;
+    text-align: center;
+  }
+`;
+
 const Footer = () => {
   const year = new Date().getFullYear();
+  const { width } = useWindowSize();
 
   return (
     <FooterWrapper>
@@ -90,7 +127,7 @@ const Footer = () => {
           <Typography variant="body1" textColor="white">
             Get out there & discover your next slope, mountain & destination!
           </Typography>
-          <Typography variant="body1" textColor="gray">
+          <Typography variant="body1" textColor="white">
             &copy; {year} Copyright - {siteConfig.siteName}
           </Typography>
         </FooterCol1>
@@ -108,6 +145,13 @@ const Footer = () => {
             <FooterNav data={LinksTwo} />
           </div>
         </FooterCol2>
+        {width && width <= 768 && (
+          <MobileCopyRight>
+            <Typography variant="body1" textColor="gray">
+              &copy; {year} Copyright - {siteConfig.siteName}
+            </Typography>
+          </MobileCopyRight>
+        )}
       </FooterContainer>
     </FooterWrapper>
   );

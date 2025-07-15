@@ -3,19 +3,38 @@ import Container from './Container';
 
 const SectionWrapper = styled.section`
   width: 100%;
-  padding-top: 3rem;
+  padding-top: 0;
   padding-bottom: 3rem;
-  //min-height: 500px;
+
+  @media (min-width: 768px) {
+    padding-top: 3rem;
+  }
+
+  &.section-first {
+    @media (min-width: 768px) {
+      margin-top: 500px;
+    }
+
+    @media (min-width: 992px) {
+      margin-top: 700px;
+    }
+
+    @media (min-width: 1200px) {
+      margin-top: 500px;
+    }
+  }
 `;
 
 interface Props {
   children: React.ReactNode;
-  className?: string; // Make sure to include className in the props
+  className?: string;
+  id?: string;
+  style?: React.CSSProperties;
 }
 
-const Section = ({ children, className }: Props) => {
+const Section = ({ children, className, style, id }: Props) => {
   return (
-    <SectionWrapper className={className}>
+    <SectionWrapper className={className} style={style} id={id}>
       <Container maxWidth="80rem">{children}</Container>
     </SectionWrapper>
   );

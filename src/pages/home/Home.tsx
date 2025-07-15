@@ -7,36 +7,51 @@ import { s3 } from '@/utils/s3';
 import { LuArrowRight } from 'react-icons/lu';
 
 const SectionInner = styled.div`
-  //min-height: 500px;
-  padding-top: 6rem;
-  padding-bottom: 12rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  @media (min-width: 768px) {
+    //padding-top: 6rem;
+    //padding-bottom: 6rem;
+  }
+
+  @media (min-width: 992px) {
+    padding-bottom: 12rem;
+  }
+
   & p {
     line-height: 2;
   }
 `;
 
-const SectionFirst = styled.div`
-  margin-top: 500px;
-  //background: red;
-  min-height: 500px;
-`;
-
 const GridLayout = styled.div`
   display: grid;
   position: relative;
-  //background: red;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+
   & .contents {
     position: relative;
     z-index: 2;
-    padding-left: 100px;
-    padding-top: 80px;
+    padding-bottom: 2rem;
+
+    padding-top: 140px;
+
+    @media (min-width: 768px) {
+      padding-top: 80px;
+      padding-left: 50px;
+      padding-bottom: 0;
+    }
+
+    @media (min-width: 992px) {
+      padding-left: 100px;
+    }
   }
 `;
 
 const WaterMarkNumber = styled.div`
-  //background: blue;
   font-weight: 800;
   font-size: 14rem;
   line-height: 0.7;
@@ -100,6 +115,14 @@ const ReadMore = styled.a`
   }
 `;
 
+const ReserveContent = styled.div`
+  order: 2;
+  @media (min-width: 768px) {
+    order: 1;
+    //background: red;
+  }
+`;
+
 const Home = () => {
   return (
     <Layout pageTitle="Home">
@@ -110,44 +133,41 @@ const Home = () => {
           <ScrollIcon align="left" />
         </Content>
       </Hero>
-
-      <SectionFirst id="sectionFirst">
-        {' '}
-        <Section>
-          <SectionInner>
-            <GridLayout>
-              <RelativeContent>
-                <WaterMarkNumber>01</WaterMarkNumber>
-                <div className="contents">
-                  <SubHeader>Get Started</SubHeader>
-                  <Typography variant="h2" textColor="white">
-                    What kind of Irish hiker are you?
-                  </Typography>
-                  <Typography variant="body1" textColor="white">
-                    Knowing your hiking experience is key when exploring Ireland's trails. From gentle coastal walks to
-                    challenging mountain routes, Ireland offers something for every level. Use this guide to find hikes
-                    that suit your ability—whether you're a beginner, intermediate, or seasoned hiker—so you can safely
-                    enjoy the country's stunning landscapes.
-                  </Typography>
-                  <ReadMore href="#">
-                    Read More <LuArrowRight />
-                  </ReadMore>
-                </div>
-              </RelativeContent>
-              <div>
-                <img src={s3('01.png')} alt="01" />
-              </div>
-            </GridLayout>
-          </SectionInner>
-        </Section>
-      </SectionFirst>
-
-      <Section>
+      {/* 01 */}
+      <Section className="section-first" id="get-started">
         <SectionInner>
           <GridLayout>
+            <RelativeContent>
+              <WaterMarkNumber>01</WaterMarkNumber>
+              <div className="contents">
+                <SubHeader>Get Started</SubHeader>
+                <Typography variant="h2" textColor="white">
+                  What kind of Irish hiker are you?
+                </Typography>
+                <Typography variant="body1" textColor="white">
+                  Knowing your hiking experience is key when exploring Ireland's trails. From gentle coastal walks to
+                  challenging mountain routes, Ireland offers something for every level. Use this guide to find hikes
+                  that suit your ability—whether you're a beginner, intermediate, or seasoned hiker—so you can safely
+                  enjoy the country's stunning landscapes.
+                </Typography>
+                <ReadMore href="#">
+                  Read More <LuArrowRight />
+                </ReadMore>
+              </div>
+            </RelativeContent>
             <div>
-              <img src={s3('02.png')} alt="01" />
+              <img src={s3('01.png')} alt="01" style={{ maxWidth: '100%' }} />
             </div>
+          </GridLayout>
+        </SectionInner>
+      </Section>
+      {/* 02 */}
+      <Section>
+        <SectionInner>
+          <GridLayout style={{ order: 'rtl' }}>
+            <ReserveContent>
+              <img src={s3('02.png')} alt="02" style={{ maxWidth: '100%' }} />
+            </ReserveContent>
             <RelativeContent>
               <WaterMarkNumber>02</WaterMarkNumber>
               <div className="contents">
@@ -169,6 +189,7 @@ const Home = () => {
           </GridLayout>
         </SectionInner>
       </Section>
+      {/* 03 */}
       <Section>
         <SectionInner>
           <GridLayout>
@@ -191,7 +212,7 @@ const Home = () => {
               </div>
             </RelativeContent>
             <div>
-              <img src={s3('03.png')} alt="01" />
+              <img src={s3('03.png')} alt="03" style={{ maxWidth: '100%' }} />
             </div>
           </GridLayout>
         </SectionInner>

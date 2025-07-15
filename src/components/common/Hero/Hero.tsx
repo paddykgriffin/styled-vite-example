@@ -185,7 +185,7 @@ const ScrollIcon = ({ className, align = 'right' }: ScrollIconProps) => {
   // };
 
   const scrollToBottom = () => {
-    const target = document.getElementById('sectionFirst');
+    const target = document.getElementById('get-started');
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' });
     }

@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import HeaderNav from '../../navigation/HeaderNav';
-// import siteConfig from '../../site-config';
 import Container from '../Container';
 import styled from 'styled-components';
 import SiteLogo from '../../common/Logo/Logo';
-//import { ModeToggle } from '../ModeToggle';
 import { useHeader } from '@/components/layout/Header/HeaderContext';
 import SidebarNav from '@/components/navigation/SidebarNav';
 import useWindowSize from '@/hooks/useWindowSize';
@@ -27,6 +25,10 @@ const HeaderWrapper = styled.header<HeaderWrapperProps>`
   @media (min-width: 768px) {
     padding: 1rem;
   }
+
+  @media (min-width: 992px) {
+    padding: 2rem;
+  }
 `;
 
 const ElementsWrap = styled.div`
@@ -36,12 +38,9 @@ const ElementsWrap = styled.div`
 
 const HeaderContainer = styled(Container)`
   display: flex;
-  // padding-left: 1rem;
-  // padding-right: 1rem;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  //background: red;
   @media (min-width: 992px) {
     max-width: 1200px;
     justify-content: space-between;
